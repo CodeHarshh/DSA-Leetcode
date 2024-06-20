@@ -9,7 +9,11 @@ public:
         while (s < e) {
             if (arr[mid] < arr[mid + 1]) {
                 s = mid + 1;
-            } else {
+            } else if (arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1]) {
+                return mid;
+            }
+
+            else {
                 e = mid;
             }
             mid = s + (e - s) / 2;
