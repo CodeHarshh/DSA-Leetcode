@@ -12,7 +12,7 @@ class Solution {
 public:
     vector<int> nodesBetweenCriticalPoints(ListNode* head) {
         vector<int> ans = {-1, -1};
-
+      // cp ->critical point
         ListNode* prev = head;
         if (!prev)
             return ans;
