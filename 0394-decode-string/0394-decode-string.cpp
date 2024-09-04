@@ -1,5 +1,6 @@
 class Solution {
 public:
+///*************
     string decodeString(string s) {
         stack<string> st;
         for (char it : s) {
@@ -17,7 +18,7 @@ public:
 
                 string NumbericString = "";
                 while (!st.empty() && isdigit(st.top()[0])) {
-                    NumbericString = st.top() + NumbericString;
+                    NumbericString = st.top() + NumbericString;// digit like 3 will come 
                     st.pop();
                 }
 
