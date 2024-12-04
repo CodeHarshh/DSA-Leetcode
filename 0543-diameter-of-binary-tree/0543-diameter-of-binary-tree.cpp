@@ -1,29 +1,20 @@
 
 class Solution {
 public:
-    int maxDepth(TreeNode* root) {
-
-        if (root == NULL)
-            return 0;
-
-        int leftsubTree = maxDepth(root->left);
-        int RightsubTree = maxDepth(root->right);
-        int maxans = max(leftsubTree, RightsubTree);
-
-        return maxans + 1;
-    }
-
     int diameterOfBinaryTree(TreeNode* root) {
 
+        int d = 0;
+        solve(root, d);
+        return d;
+    }
+
+    int solve(TreeNode* root, int& d) {
         if (root == NULL)
             return 0;
+        int leftsubtree = solve(root->left, d);
+        int rightsubtree = solve(root->right, d);
 
-        int leftsubtree = diameterOfBinaryTree(root->left);
-        int rightsubtree = diameterOfBinaryTree(root->right);
-    
-        int bothside = maxDepth(root->left) + maxDepth(root->right);
-        int maxans=max(leftsubtree,max(rightsubtree,bothside));
-
-        return maxans;
+        d = max(d, leftsubtree + rightsubtree);
+        return max(leftsubtree, rightsubtree) + 1;
     }
 };
