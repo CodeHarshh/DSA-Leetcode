@@ -18,6 +18,9 @@ public:
             TreeNode* rightside=lowestCommonAncestor(root->right,p,q);
 
             if(leftside && rightside) return root;
-             return leftside ? leftside : rightside;
+            // this line just to return something //we can also use 
+            // return leftside ? leftside : rightside;
+
+             return rightside ? rightside : leftside;
     }
 };
