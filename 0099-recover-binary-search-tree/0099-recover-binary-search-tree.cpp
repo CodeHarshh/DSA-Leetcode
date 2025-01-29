@@ -11,7 +11,7 @@ public:
         if (!root)return;
         inorder(root->left);
 
-        if (prev != NULL && (root->val < prev->val)) { //  voilation occurs
+        if (prev != NULL && (root->val < prev->val)) { // mean voilation occurs
             if (first == NULL) {                       // first time voilation
                 first = prev;
                 middle = root;
