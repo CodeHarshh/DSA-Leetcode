@@ -1,7 +1,6 @@
 
 class Solution {
 public:
-    // see numbering
     bool issolve(TreeNode* root) {
        queue<TreeNode*>q;
        q.push(root);
