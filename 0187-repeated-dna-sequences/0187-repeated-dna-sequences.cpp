@@ -8,13 +8,10 @@ public:
         string current=s.substr(i,10);
           m[current]++;
         }
-        for(auto it:m){
+        for(auto & it:m){
             if(it.second>1){
                 ans.push_back(it.first);
             }
-        }
-        for(auto it:ans){
-            cout<<it<<" ";
         }
         return ans;
     }
