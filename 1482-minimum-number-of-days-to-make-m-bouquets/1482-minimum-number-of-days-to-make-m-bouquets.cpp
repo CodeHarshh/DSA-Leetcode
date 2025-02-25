@@ -28,7 +28,7 @@ public:
         if (total_flower > bloomDay.size())
             return -1;
 
-        int s = *min_element(bloomDay.begin(), bloomDay.end());
+        int s =1;
         int e = *max_element(bloomDay.begin(), bloomDay.end());
 
         int mid = s + (e - s) / 2;
