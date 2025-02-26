@@ -1,5 +1,7 @@
 class Solution {
 public:
+// each array represt single  flower
+// it show no of days to blown 
     bool ispossible(vector<int>& bloomDay, int m, int k, int mid) {
         // mid=days
         int cnt = 0;
@@ -28,7 +30,7 @@ public:
         if (total_flower > bloomDay.size())
             return -1;
 
-        int s =1;
+        int s =1;// s= *min_element(bloomDay.begin(), bloomDay.end()) 
         int e = *max_element(bloomDay.begin(), bloomDay.end());
 
         int mid = s + (e - s) / 2;
