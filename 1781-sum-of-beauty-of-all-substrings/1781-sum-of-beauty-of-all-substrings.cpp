@@ -1,7 +1,7 @@
 class Solution {
 public:
     int beautySum(string s) {
-        // beauty= most frequesnt - least frequent
+        // beauty= most frequent - least frequent
         int beauty_sum = 0;
         unordered_map<char, int> m;
         for (int i = 0; i < s.size(); i++) {
