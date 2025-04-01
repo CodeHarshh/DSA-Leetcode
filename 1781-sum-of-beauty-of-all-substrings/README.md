@@ -1,7 +1,7 @@
-<h2><a href="https://leetcode.com/problems/sum-of-beauty-of-all-substrings/">1781. Sum of Beauty of All Substrings</a></h2><h3>Medium</h3><hr><div><p>The <strong>beauty</strong> of a string is the difference in frequencies between the most frequent and least frequent characters.</p>
+<h2><a href="https://leetcode.com/problems/sum-of-beauty-of-all-substrings">1781. Sum of Beauty of All Substrings</a></h2><h3>Medium</h3><hr><p>The <strong>beauty</strong> of a string is the difference in frequencies between the most frequent and least frequent characters.</p>
 
 <ul>
-	<li>For example, the beauty of <code>"abaacc"</code> is <code>3 - 1 = 2</code>.</li>
+	<li>For example, the beauty of <code>&quot;abaacc&quot;</code> is <code>3 - 1 = 2</code>.</li>
 </ul>
 
 <p>Given a string <code>s</code>, return <em>the sum of <strong>beauty</strong> of all of its substrings.</em></p>
@@ -9,13 +9,15 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> s = "aabcb"
+<pre>
+<strong>Input:</strong> s = &quot;aabcb&quot;
 <strong>Output:</strong> 5
-<strong>Explanation: </strong>The substrings with non-zero beauty are ["aab","aabc","aabcb","abcb","bcb"], each with beauty equal to 1.</pre>
+<strong>Explanation: </strong>The substrings with non-zero beauty are [&quot;aab&quot;,&quot;aabc&quot;,&quot;aabcb&quot;,&quot;abcb&quot;,&quot;bcb&quot;], each with beauty equal to 1.</pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> s = "aabcbaa"
+<pre>
+<strong>Input:</strong> s = &quot;aabcbaa&quot;
 <strong>Output:</strong> 17
 </pre>
 
@@ -26,4 +28,3 @@
 	<li><code>1 &lt;= s.length &lt;=<sup> </sup>500</code></li>
 	<li><code>s</code> consists of only lowercase English letters.</li>
 </ul>
-</div>
