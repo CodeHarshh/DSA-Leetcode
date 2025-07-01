@@ -10,26 +10,31 @@ public:
         }
         return slow;
     }
+
     ListNode* reverse(ListNode* prev, ListNode* curr) {
-        while (curr != NULL) {
-            ListNode* forward = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = forward;
-        }
-        return prev;
+        if (curr == NULL)
+            return prev;
+        ListNode* forward = curr->next;
+        curr->next = prev;
+        prev = curr;
+        return reverse(prev, forward);
     }
 
     bool isPalindrome(ListNode* head) {
         ListNode* middle = getmiddle(head);
         ListNode* firsthalf = head;
+        cout << firsthalf->val;
         ListNode* secondhalf = reverse(nullptr, middle);
+        cout << secondhalf->val;
 
         while (firsthalf != NULL && secondhalf != NULL) {
-            if (firsthalf->val != secondhalf->val)
+
+            if (secondhalf->val == firsthalf->val) {
+                firsthalf = firsthalf->next;
+                secondhalf = secondhalf->next;
+            } else {
                 return false;
-            firsthalf = firsthalf->next;
-            secondhalf = secondhalf->next;
+            }
         }
         return true;
     }
