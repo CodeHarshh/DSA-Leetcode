@@ -2,7 +2,8 @@
 class Solution {
 public:
     int getlength(ListNode* head) {
-        if (head == NULL) return 0;
+        if (head == NULL)
+            return 0;
         ListNode* temp = head;
         int cnt = 0;
         while (temp != NULL) {
@@ -18,7 +19,8 @@ public:
 
         int len = getlength(head);
 
-        if (len < k) return head;
+        if (len < k)
+            return head;
         ListNode* dummy = new ListNode(-1);
 
         dummy->next = head;
@@ -33,14 +35,15 @@ public:
             nex = curr->next;
 
             for (int i = 1; i < k; i++) {
-              ListNode* temp=nex->next;
-              nex->next=prev->next;
-              prev->next=nex;
-              curr->next=temp;
-              nex=temp;
+                ListNode* temp = nex->next; // we will iterate from k=1 to k-1
+                nex->next =
+                    prev->next;   // every iteration we change two element place
+                prev->next = nex; // bring nex in front
+                curr->next = temp; // connect curr to rest part
+                nex = temp;        // move nex ahead
             }
-        len=len-k;
-        prev=curr;
+            len = len - k;
+            prev = curr;
         }
         return dummy->next;
     }
