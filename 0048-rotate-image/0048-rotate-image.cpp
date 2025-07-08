@@ -7,7 +7,7 @@ class Solution {
     int col=m[0].size();
     
     for(int i=0;i<row;i++){
-        for(int j=i;j<col;j++){
+        for(int j=i;j<col;j++){   // If you start j = 0, you'll swap each pair twice and mess up the matrix.
             swap(m[i][j], m[j][i]);
         }
     }
