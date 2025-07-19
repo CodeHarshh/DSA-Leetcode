@@ -6,7 +6,7 @@ public:
             int hours =
                 (timePoints[i][0] - '0') * 10 + (timePoints[i][1] - '0');
             // or hours=stoi(timePoints[i].substr(0,2)); 
-            // It will return sunstring of length 2 starting from 0
+            // It will return substring of length 2 starting from 0
             int minutes =
                 (timePoints[i][3] - '0') * 10 + (timePoints[i][4] - '0');
             // or minutes=stoi(timePoints[i].substr(3,2));
@@ -21,6 +21,8 @@ public:
             int minimum = mini[i] - mini[i - 1];
             maxminimun = min(maxminimun, minimum);
         }
+//         Normal difference: 1439 - 1 = 1438 minutes ❌ (wrong)
+//         Circular difference: 1440 + 1 - 1439 = 2 minutes ✅ (correct)
         int circular = 1440 + mini[0] - mini.back();
         return min(maxminimun, circular);
         return maxminimun;
