@@ -13,12 +13,9 @@ public:
     string back(int steps) {
         while (steps--) {
             if (browserSt.size() > 1) {
-                string temp = browserSt.top();
-                browserSt.pop();
-                frwdSt.push(temp);
-            } else {
-                break;
-            }
+                frwdSt.push( browserSt.top());
+                 browserSt.pop();
+            } else break;   
         }
         return browserSt.top();
     }
