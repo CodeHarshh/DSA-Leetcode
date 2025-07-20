@@ -7,14 +7,11 @@ public:
         q.push(t);
 
         // check valid range and removing the element not in range
-        while (!q.empty()&& q.front() < (t - 3000)) {
+        while (!q.empty() && q.front() < (t - 3000)) {
             q.pop();
-
-           
         }
-         return q.size();
+        return q.size();
     }
-    
 };
 
 /**
