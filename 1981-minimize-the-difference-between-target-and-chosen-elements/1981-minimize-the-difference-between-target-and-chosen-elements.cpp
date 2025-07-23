@@ -20,29 +20,58 @@ public:
     //               return solve(mat, sum, row, target);
     //           }
 
-    int solve(vector<vector<int>>& mat, int sum, int row, int& target,
-              vector<vector<int>>& dp) {
-        int ans = INT_MAX;
-        if (row >= mat.size())return abs(target - sum);
-        if (dp[sum][row] != -1) return dp[sum][row];
 
-        for (int col = 0; col < mat[row].size(); col++) {
-            int recAns = solve(mat, sum + mat[row][col], row + 1, target,
-                               dp); // return value come here
-            ans = min(ans, recAns);
+        int solve(vector<vector<int>>& mat, int sum, int row, int& target,
+        vector<vector<int>>&dp ) {
+         if(row>=mat.size()) return abs(target-sum);
+         if(dp[sum][row]!=-1) return dp[sum][row];
+        int ans=INT_MAX;
+         
+        for(int col=0;col<mat[row].size();col++){  
+             int recAns= solve(mat,sum +mat[row][col] ,row+1,target,dp);
+                ans=min(ans,recAns);
+
         }
-
-        dp[sum][row] = ans;
+       dp[sum][row]=ans;
         return dp[sum][row];
+
     }
 
     int minimizeTheDifference(vector<vector<int>>& mat, int target) {
-        int sum = 0, row = 0;
-        int maxSum = 0;
-        for (const auto& row : mat) {
-            maxSum += *max_element(row.begin(), row.end());
-        }
-        vector<vector<int>> dp(maxSum + 1, vector<int>(mat.size(), -1));
-        return solve(mat, sum, row, target, dp);
+      int row=0,sum=0,maxsum=0;
+      for(auto it:mat){
+      maxsum+= *max_element(it.begin() ,it.end());
+      }
+      cout<<maxsum;
+      vector<vector<int>>dp(maxsum+1,vector<int>(mat.size()+1,-1));
+      return solve(mat,sum,row,target,dp);
     }
+
+
+
+    // int solve(vector<vector<int>>& mat, int sum, int row, int& target,
+    //           vector<vector<int>>& dp) {
+    //     int ans = INT_MAX;
+    //     if (row >= mat.size())return abs(target - sum);
+    //     if (dp[sum][row] != -1) return dp[sum][row];
+
+    //     for (int col = 0; col < mat[row].size(); col++) {
+    //         int recAns = solve(mat, sum + mat[row][col], row + 1, target,
+    //                            dp); // return value come here
+    //         ans = min(ans, recAns);
+    //     }
+
+    //     dp[sum][row] = ans;
+    //     return dp[sum][row];
+    // }
+
+    // int minimizeTheDifference(vector<vector<int>>& mat, int target) {
+    //     int sum = 0, row = 0;
+    //     int maxSum = 0;
+    //     for (const auto& row : mat) {
+    //         maxSum += *max_element(row.begin(), row.end());
+    //     }
+    //     vector<vector<int>> dp(maxSum + 1, vector<int>(mat.size(), -1));
+    //     return solve(mat, sum, row, target, dp);
+    // }
 };
