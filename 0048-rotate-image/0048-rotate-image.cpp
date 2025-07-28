@@ -7,7 +7,7 @@ class Solution {
      int col=m[0].size();
 
      for(int i=0;i<row;i++){
-        for(int j=i;j<col;j++){
+        for(int j=i+1;j<col;j++){
             swap(m[i][j],m[j][i]);
         }
      }
