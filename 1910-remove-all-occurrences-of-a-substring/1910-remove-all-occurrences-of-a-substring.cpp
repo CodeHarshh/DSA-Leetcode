@@ -1,12 +1,24 @@
 class Solution {
 public:
 
+// string removeOccurrences(string s, string part) {
+//  while(s.find(part)!=-1){
+//     s.erase(s.find(part),part.length());
+//  }
+//         return s;
+// }
+
+
 string removeOccurrences(string s, string part) {
- while(s.find(part)!=-1){
+
+while(s.find(part)!=-1){
     s.erase(s.find(part),part.length());
- }
-        return s;
 }
+return s;
+}
+
+
+
 
 
 
