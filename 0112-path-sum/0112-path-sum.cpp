@@ -1,25 +1,41 @@
 
 class Solution {
 public:
-    bool hasPathSum(TreeNode* root, int targetSum) {
-        int sum = 0;
-        bool ans = solve(root, targetSum, sum);
-        return ans;
+
+// Start from the root and subtract each node’s value from the target sum.
+
+// Keep going left and right until you reach a leaf node.
+
+// If at a leaf, the remaining sum equals the node’s value → path found.
+
+// Return true if any such path exists.
+
+
+  bool hasPathSum(TreeNode* root, int targetSum) {
+        if (!root) return NULL;
+
+        if (!root->left && !root->right) {
+           return root->val == targetSum;
+        }
+
+        int left = hasPathSum(root ->left, targetSum - root->val);
+        int right = hasPathSum(root->right, targetSum - root->val);
+
+        return left || right;
     }
+  
 
-    bool solve(TreeNode* root, int targetSum, int sum) {
-        if(root==NULL) return false;
+    // bool hasPathSum(TreeNode* root, int targetSum) {
+    //     if(root==NULL) return false;
 
-        sum=sum+root->val;
+    //     if(!root->right && !root->left) {
+    //         return targetSum==root->val;
+    //     }
 
+    //      bool left_sum=hasPathSum(root->left,targetSum - root->val);
+    //      bool right_sum=hasPathSum(root->right,targetSum - root->val);
 
-        bool l = solve(root->left, targetSum, sum );
-        bool r = solve(root->right, targetSum, sum );
+    //      return left_sum||right_sum;
 
-        if (l == NULL && r == NULL && sum == targetSum)return true;
-        if (l == true && r == false)return true;
-        if (l == false && r == true)return true;
-
-        return l || r;
-    }
+    // }
 };
