@@ -1,0 +1,60 @@
+class Solution {
+public:
+    //*******
+    bool issafe(vector<vector<char>>& board, char digit, int row, int col) {
+        // rowcheck
+        int n = board.size();
+        for (int i = 0; i < n; i++) {
+            if (board[row][i] == digit) {
+                return false;
+            }
+        }
+        // colcheck
+        for (int i = 0; i < n; i++) {
+            if (board[i][col] == digit) {
+                return false;
+            }
+        }
+        // 3x3 wali matrix check
+        int stRow =row/3*3 ;
+        int stCol=col/3* 3;
+          
+          for(int i=stRow;i<=stRow+2;i++){
+            for(int j=stCol;j<=stCol+2;j++){
+                if(board[i][j]==digit) return false;
+            }
+          }
+        return true;
+    }
+
+    bool solve(vector<vector<char>>& board) {
+        // base case ->?
+        // base case not needed
+        // Ek case hm karenge
+
+        // first find the empty cell -> '.'
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = 0; j < board.size(); j++) {
+                if (board[i][j] == '.') {
+                    for (char digit = '1'; digit <= '9'; digit++) {
+
+                        if (issafe(board, digit, i, j)) {
+                            board[i][j] = digit;
+                            bool agyeSolvehopayega = solve(board);
+                            if (agyeSolvehopayega) {
+                                return true;
+                            } else {
+                                board[i][j] = '.';
+                            }
+                        }
+                    }
+
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    void solveSudoku(vector<vector<char>>& board) { solve(board); }
+};
