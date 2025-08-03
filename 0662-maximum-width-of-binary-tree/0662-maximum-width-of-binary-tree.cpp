@@ -46,8 +46,6 @@ public:
      return maxwidth;
     }
 
-    
-
     // int widthOfBinaryTree(TreeNode* root) {
 
     //      unsigned long long  maxwidth = 0;
