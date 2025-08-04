@@ -10,7 +10,7 @@ bool solve(TreeNode* p, TreeNode* q){
     
     bool a=solve(p->left,q->left);
     bool  b=solve(p->right,q->right);
-    return a||b;
+    return a && b;
 }
     bool isSameTree(TreeNode* p, TreeNode* q) {
         return solve(p,q);
