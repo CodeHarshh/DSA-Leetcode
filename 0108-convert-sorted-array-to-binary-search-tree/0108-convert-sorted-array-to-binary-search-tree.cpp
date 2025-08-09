@@ -2,12 +2,13 @@
 class Solution {
 public:
     TreeNode* solve(vector<int>& nums, int n, int s, int e) {
+        if(s>e) return NULL;
         int mid = (s + e) / 2;
 
         TreeNode* root = new TreeNode(nums[mid]);
 
-        root->left = solve(root->left, n, s, mid - 1);
-        root->right = solve(root->right, n, mid + 1, e);
+        root->left = solve(nums, n, s, mid - 1);
+        root->right = solve(nums, n, mid + 1, e);
         return root;
     }
 
