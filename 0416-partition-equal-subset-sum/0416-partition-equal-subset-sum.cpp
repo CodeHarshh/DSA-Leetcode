@@ -24,18 +24,21 @@ public:
 
 
 
- bool solve(vector<int>& nums, int target, int i) {
+ bool solve(vector<int>& nums, int target, int i, vector<vector<int>>&dp) {
     if(target==0) return true;
     if(target<0) return false;
     if(i>=nums.size()) return false;
+
+    if(dp[target][i]!=-1) return dp[target][i];
      
     //  if(nums[i<=target]){
-        bool inc=solve(nums,target-nums[i],i+1);
+        bool inc=solve(nums,target-nums[i],i+1,dp);
     //  }
     
-    bool exc=solve(nums,target,i+1);
+    bool exc=solve(nums,target,i+1,dp);
 
-    return inc||exc;
+     dp[target][i]= inc||exc;
+      return dp[target][i];
     }
 
     bool canPartition(vector<int>& nums) {
@@ -45,7 +48,8 @@ public:
        }
        if(sum%2!=0) return false;
        int target=sum/2;
-      return solve(nums,target,0);
+       vector<vector<int>>dp(target+1,vector<int>(nums.size()+1,-1));
+      return solve(nums,target,0,dp);
     }
 
 
