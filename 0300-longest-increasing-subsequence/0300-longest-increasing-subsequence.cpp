@@ -1,25 +1,48 @@
 class Solution {
 public:
 //  most optimal approach   tc- o(log n)
+
 int solve(vector<int>& nums){
-vector<int>ans;
-ans.push_back(nums[0]);
+  vector<int>ans;
+  ans.push_back(nums[0]);
 
-for(int i=1;i<nums.size();i++){
-    if(nums[i]>ans.back()){ ans.push_back(nums[i]);}
-    else{
-auto it = lower_bound(ans.begin(), ans.end(), nums[i]);
-int idx = it - ans.begin();
-ans[idx]=nums[i];
+  for(int i=1;i<nums.size();i++){
+    if(nums[i]>ans.back()){
+        ans.push_back(nums[i]);
+    }else{
+        int indx= lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
+        ans[indx]=nums[i];
     }
-}
-    return ans.size();
-
+  }
+return ans.size();
 }
     int lengthOfLIS(vector<int>& nums) {
        
         return solve(nums);
     }
+
+
+
+
+// int solve(vector<int>& nums){
+// vector<int>ans;
+// ans.push_back(nums[0]);
+
+// for(int i=1;i<nums.size();i++){
+//     if(nums[i]>ans.back()){ ans.push_back(nums[i]);}
+//     else{
+// auto it = lower_bound(ans.begin(), ans.end(), nums[i]);
+// int idx = it - ans.begin();
+// ans[idx]=nums[i];
+//     }
+// }
+//     return ans.size();
+
+// }
+//     int lengthOfLIS(vector<int>& nums) {
+       
+//         return solve(nums);
+//     }
 
 
 
