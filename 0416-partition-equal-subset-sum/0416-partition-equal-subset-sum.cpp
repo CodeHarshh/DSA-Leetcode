@@ -2,6 +2,8 @@ class Solution {
 public:
 
     //  TLE
+
+
 //  bool solve(vector<int>& nums, int target, int i) {
 //         if (target < 0 || i == nums.size())
 //             return false;
@@ -24,33 +26,61 @@ public:
 
 
 
- bool solve(vector<int>& nums, int target, int i, vector<vector<int>>&dp) {
-    if(target==0) return true;
-    if(target<0) return false;
-    if(i>=nums.size()) return false;
+     bool solve(vector<int>& nums, int target, int i,  vector<vector<int>>&dp) {
+      if(target<0 || i==nums.size())return false;
+      if(target==0)return true;      
 
-    if(dp[target][i]!=-1) return dp[target][i];
-     
-    //  if(nums[i<=target]){
-        bool inc=solve(nums,target-nums[i],i+1,dp);
-    //  }
-    
-    bool exc=solve(nums,target,i+1,dp);
+      if(dp[target][i]!=-1)return dp[target][i];
 
-     dp[target][i]= inc||exc;
+      int inc=solve(nums,target-nums[i],i+1,dp);
+
+      int exc=solve(nums,target,i+1,dp);
+
+
+      dp[target][i]= inc||exc;
       return dp[target][i];
     }
 
     bool canPartition(vector<int>& nums) {
        int sum=0;
-       for(int i=0;i<nums.size();i++){
-        sum=sum+nums[i];
+       int n=nums.size();
+       for(int i=0;i<n;i++){
+        sum+=nums[i];
        }
-       if(sum%2!=0) return false;
+       if(sum%2!=0)return false;
        int target=sum/2;
-       vector<vector<int>>dp(target+1,vector<int>(nums.size()+1,-1));
-      return solve(nums,target,0,dp);
+        vector<vector<int>>dp(target+1,vector<int>(nums.size()+1,-1));
+             return solve(nums,target,0,dp);
     }
+
+
+//  bool solve(vector<int>& nums, int target, int i, vector<vector<int>>&dp) {
+//     if(target==0) return true;
+//     if(target<0) return false;
+//     if(i>=nums.size()) return false;
+
+//     if(dp[target][i]!=-1) return dp[target][i];
+     
+//     //  if(nums[i<=target]){
+//         bool inc=solve(nums,target-nums[i],i+1,dp);
+//     //  }
+    
+//     bool exc=solve(nums,target,i+1,dp);
+
+//      dp[target][i]= inc||exc;
+//       return dp[target][i];
+//     }
+
+//     bool canPartition(vector<int>& nums) {
+//         int sum=0;
+//         for(int i=0;i<nums.size();i++){
+//             sum=sum+nums[i];
+//         }
+//         if(sum%2!=0) return false;
+//         int target=sum/2;
+//         vector<vector<int>>dp(target+1,vector<int>(nums.size()+1,-1));
+//         return solve(nums,target,0,dp);
+//     }
 
 
 
